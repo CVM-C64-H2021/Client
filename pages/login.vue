@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - C64</title>
-</head>
-<body>
-
-    <form action="">
+<template>
+  <div class="container">
+   <form action="">
         <label for="courriel">Courriel</label>
         <input name="courriel" type="text" placeholder="votre courriel ici">
         <label for="password">Password</label>
         <input name="password" type="password" placeholder="votre password ici">
         <button type="submit">Submit</button>
     </form>
-    
-</body>
-</html>
+  </div>
+</template>
