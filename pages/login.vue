@@ -19,3 +19,10 @@
 }
 
 </style>
+
+<script>
+    console.log("patate");
+export default {
+    
+}
+</script>

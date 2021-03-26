@@ -1,3 +1,3 @@
 <template>
-  <img src="https://vueschool.io/img/favicons/apple-touch-icon.png" alt="the logo">
+  <img src="https://www.forexalchemy.com/wp-content/uploads/2018/11/api-img.png" alt="the logo">
 </template>
