@@ -2,10 +2,10 @@
   <nav class="nav">
     <div class="logo">
       <nuxt-link :to="{name: 'index'}" class="logo text-lg">
-        Nuxt Fundamentals
+       C-64 "Nom intéressant à venir"
       </nuxt-link>
 
-      <span class="subheader">A Vue School course</span>
+      <span class="subheader">Un projet de la cohorte au DEC intensif en informatique</span>
     </div>
   </nav>
 </template>
