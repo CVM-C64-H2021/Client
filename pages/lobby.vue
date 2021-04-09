@@ -1,31 +1,21 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
       <h1 class="title">
-        Client-C64
+        Lobby
       </h1>
-       <nuxt-link :to="{name: 'login'}" class="button--grey">
-        Login
+        <nuxt-link :to="{name: 'sensors'}" class="button--grey">
+        Sensors
       </nuxt-link> 
-        <a
-          href="https://github.com/CVM-C64-H2021/Client"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+        <nuxt-link :to="{name: 'alerts'}" class="button--grey">
+        Alerts
+      </nuxt-link> 
     </div>
   </div>
 </template>
 
 <script>
-
-export default {
-  
-}
+export default {}
 
 
 

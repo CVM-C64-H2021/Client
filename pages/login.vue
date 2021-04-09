@@ -22,7 +22,34 @@
 
 <script>
     console.log("patate");
+        
 export default {
     
 }
+
+let repAPI = 
+{
+  id: "id",
+  date: "2020-04-09",
+  type: "type",
+  valeur: "valeur",
+  alerte: "0 ou 1",
+  messageAlerte: "msg ici"
+}
 </script>
+
+formdata = 
+
+  {
+    request: "bla",
+    limit: "blabl;a"
+  }
+
+
+GET /sensors/ {limit, offset}
+
+GET /sensor/id {limit, offset}
+
+GET /alerts {limit, offset}
+
+GET /sensor/id/alerts {limit, offset}
