@@ -6,7 +6,8 @@
     <ul>
       <li v-for="mountain of mountains">{{ mountain.title }}</li>
     </ul>
-    <button @click="$fetch">Refresh</button>
+    <button @click="$fetch">Refresh</button>    
+    
   </div>
 </template>
 
@@ -17,10 +18,20 @@
         mountains: []
       }
     },
-    async fetch() {
+    async fetch2() {
       this.mountains = await fetch(
         'https://api.nuxtjs.dev/mountains'
       ).then(res => res.json())
+    },
+    async fetch() {
+      const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "Vue POST Request Example" })
+  };
+    fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+    .then(response => response.json())
+    .then(data => (this.mountains[0] = data));
     }
   }
 </script>

@@ -14,7 +14,11 @@
 let patate = 3
 
 export default { 
-  patate: patate
+    data() {
+      return {
+        patate: patate
+      }
+    },
  }
 
 
