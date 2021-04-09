@@ -11,8 +11,11 @@
 
 <script>
 
+let patate = 3
 
-export default {  }
+export default { 
+  patate: patate
+ }
 
 
 
