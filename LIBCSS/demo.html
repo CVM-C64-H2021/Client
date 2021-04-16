@@ -1,0 +1,251 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démo de la libraire</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/demo.css">
+    <link rel="stylesheet" href="styles/larochelle-simon.css">
+    <script src="https://kit.fontawesome.com/e1800bbfa1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+                    
+            <a href="index.html" id="logo"><i class="fas fa-code"></i></a>
+    
+            <nav>
+                <ul>
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="demo.html">Démo</a></li>
+                </ul>
+            </nav>
+        
+        </header>
+        </div>
+    
+    <div class="wrapper">
+               
+
+        <section class="content demo-titre">
+            
+            <h1 class="centrer-texte">Styles générals</h1>
+
+            <hr>
+
+            <h2>Les titres</h2>
+            <p>Présention des titres et de leur look!</p>
+            <p>Tous les titres ont un <span class="italique">padding</span> de 10px en haut et en bas, et 5px sur les côtés, ainsi que des <span class="italique">margin</span> de 20px en haut et en bas, et 5px sur les côtés.</p>
+            <h1>Je suis un titre de niveau 1</h1>
+            <p class="caption">Barlow / 60px / gras</p>
+
+            <h2>Et moi, de niveau 2!</h2>
+            <p class="caption">Barlow / 50px / gras</p>
+
+            <h3>Perso, je suis niveau 3</h3>
+            <p class="caption">Barlow / 40px / gras</p>
+
+            <h4>Quant à moi, je suis niveau 4</h4>
+            <p class="caption">Barlow / 30px / gras</p>
+
+            <h5>Enfin, le niveau 5 pour moi!</h5>
+            <p class="caption">Barlow / 25px / gras </p>
+
+            <hr>
+
+            <h2>Boutons et Liens</h2>
+
+            <p>Quelques objets intéractifs ont également été modifié.</p>
+
+            <button>Je suis un boutton</button>
+            <p class="caption">Les bouttons sont en <span class="italique">display: block;</span>, et ont un <span class="italique">padding</span> et <span class="italique">margin</span> de 15px.</p>
+            <p class="caption">Une animation de <span class="italique">hover</span> prend automatiquement la couleur d'accent.</p>
+        
+            <a href="#">Je suis un lien ordinaire</a>
+            <p class="caption">Les liens prennent automatiquement la couleur d'accent.</p>
+            <a href="#" class="lien-icon">Je suis un lien avec la classe 'lien-icon'</a>
+            <p class="caption">Possibilité de rajouter un petit icone de lien en rajouter la classe 'lien-icon' à un lien.</p>
+
+        
+
+            <hr>
+
+            <h2>Des tableaux personnalisés</h2>
+
+            <table>
+
+                <tr>
+                    <th>Colonne 1</th>
+                    <th>Colonne 2</th>
+                    <th>Colonne 3</th>
+                </tr>
+                <tr>
+                    <td>Donnée 1</td>
+                    <td>Donnée 1</td>
+                    <td>Donnée 1</td>
+                </tr>
+                <tr>
+                    <td>Donnée 2</td>
+                    <td>Donnée 2</td>
+                    <td>Donnée 2</td>
+                </tr>
+                <tr>
+                    <td>Donnée 3</td>
+                    <td>Donnée 3</td>
+                    <td>Donnée 3</td>
+                </tr>
+                <tr>
+                    <td>Donnée 4</td>
+                    <td>Donnée 4</td>
+                    <td>Donnée 4</td>
+                </tr>
+
+            </table>
+
+            <hr>
+
+            <h2>Objets structurels</h2>
+            <p>Certains objets plus structurels ont également étés personnalisés, notamment les <span class="code">hr</span> et les <span class="code">section</span>.</p>
+            
+            <section class="centrer-content">
+                <p>Les sections sont inpirée d'une feuille de papier possée sur un bureau, carrées avec un fond blanc, projettant une ombre</p>
+                <p>Cela permet de définir facilement des sections et sous-sections distinctes.</p>
+                <hr>
+                <p>Les <span class="code">hr</span> sont également personnalisés, permettant de rapidement diviser le contenu d'une longue section avec la couleur d'accent.</p>
+                <p>Ces <span class="code">hr</span> prennent 45% de la largeur de l'élément parent et offrent des marges généreuse pour bien séparer le contenu.</p>
+            </section>
+        </section>
+
+
+        <section class="content">
+
+            <h1 class="centrer-texte">Les optionnels</h1>
+
+            <p class="centrer-texte">Quelques styles accessiblent via des classes custom, mais non obligatoire!</p>
+
+            <section>
+
+                <h3>Classes pour changer l'allure du texte</h3>
+
+                <h5>.caption</h5>
+                <p>La classe <span class="code">.caption</span> permet de faire une description sous une image, un tableau, etc. Le texte est placé un peu plus près de l'élément et a une fonte différente.</p>
+                <img src="https://picsum.photos/400/300" alt="Image d'exemple" >
+                <p class="caption">Ceci est une description ou explication pour l'image.</p>
+
+                <hr>
+
+                <h5>.code</h5>
+                <p>Utile pour mettre en évidence que nous parlons d'éléments provennant de code. Met la fonte du texte en <span class="code">Space Mono</span>. Peut être utiliser autant sur <span class="code"> un span dans un élément</span>, que sur un élément au complet.</p>
+                <p class="code">
+                    Ceci est un paragraphe sur lequel l'effet code est appliqué.
+                </p>
+
+                <hr>
+
+                <h5>.italique</h5>
+                <p>Assez <span class="italique">self explainatory</span>, met le texte dans l'élément avec la classe en italique.</p>
+
+                <hr>
+
+                <h5>.bold</h5>
+                <p>Une autre classe assez simple, permet de mettre du texte en <span class="bold">gras</span>.</p>
+                
+                <hr>
+
+                <h5>.font-titre</h5>
+                <p>Permet d'avoir <span class="font-titre"> la même fonte que les titres (et bouttons) </span> sur n'importe quel élément.</p>
+
+                <hr>
+
+                <h5>.centrer-texte</h5>
+                <p>Permet de centrer le texte sur lequel la classe est appliquée.</p>
+                <p class="centrer-texte">Je suis un paragraphe avec la classe <span class="code">.centrer-texte</span></p>
+
+                <hr>
+
+                <h5>.couleur-accent</h5>
+                <p>Permet d'appliquer la couleur d'accent à un élément qui serait habituellement une autre couleur.</p>
+                <p class="couleur-accent">ATTENTION! Cette classe ne peut changer la couleur que sur les éléments de type texte:  <span class="code">p, a, h1, ...</span></p>
+
+            </section>
+
+            <section>
+                <h3>Classes pour changer le style de la page</h3>
+
+                <h5>.feature</h5>
+                <p>Permet de mettre un extrait, image ou paragraphe en évidence. </p>
+                <p class="feature">
+                    Ceci est un paragraphe mit en évidence grade à la classe <span class="code">.feature</span>
+                </p>
+                <div class="feature">
+                    <img src="https://picsum.photos/400/350" alt="Image d'exemple">
+                    <p class="caption">La classe .feature peut également être appliquée à un div pour mettre en évidence toute une section, comme cette image avec la description.</p>
+                </div>
+
+                
+                <hr>
+
+                <h5>.couleur-background</h5>
+                <p>Permet de définir une couleur de fond différente du reste.</p>
+
+                <section class="couleur-background">
+                    <p>Utilise pour partager un point important, un rappel ou un avertissement.</p>
+                    <p>Il est possible de définir cette couleur dans les variables du thème.</p>
+                </section>
+
+                <hr>
+
+                <h5>.centrer-self</h5>
+                <p>Permet de centrer l'élément qui possède la classe. <span class="couleur-accent">ATTENTION!</span> Seulement applicable pour les éléments individuel qui ne sont pas du texte.</p>
+                <button class="centrer-self">Je suis au centre!</button>
+
+                <hr>
+
+                <h5>.centrer-content</h5>
+                <p>En appliquant cette classe sur un élément parent, le contenu sera centrer horizontalement et verticallement.</p>
+
+                <div class="centrer-content">
+                    <img src="https://picsum.photos/300/300" alt="" >
+                <p class="caption centrer-texte">Cette image et description sont dans un div ayant la classe .centrer-content</p>
+                </div>
+
+                <hr>
+
+                <h5>.quote</h5>
+                <p>Permet de faire une citation hors du flot du texte et la centrer automatiquement dans la page.</p>
+                <p>Va avec la classe <span class="code">.quote-auteur</span> pour nommer l'auteur de la citation. Doit respecter la forme suivante:</p>
+                <p class="code">&lt;p class='quote'&gt; Citation ... &lt;span class='quote-auteur'&gt; Auteur &lt;&#47;span&gt;&lt;/p&gt;</p>
+
+                <p class="quote">The purpose of art is washing the dust of daily life off our souls. <span class="quote-auteur">Pablo Picasso</span></p>
+
+            </section>
+
+            <section>
+
+                <h3>ID unique</h3>
+                
+                <h4>#logo</h4>
+                <p>Pour le logo du site, permet de spécifier le padding, la marge, etc. pour s'assure que tous les logos de la page respecte les règles graphiques détemrinée.</p>
+                <i class="fas fa-code" id="logo"></i>
+            </section>
+
+        </section>
+
+    
+
+    </div>
+
+    <footer>
+
+        <hr>
+    
+        <p>Projet réalisé dans le cadre du cours de Web 1 (420-C23-CVM)</p>
+        <p>Par Simon Larochelle, 2021</p>
+    
+    </footer>
+
+
+</body>
+</html>

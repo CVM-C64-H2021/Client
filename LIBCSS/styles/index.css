@@ -1,0 +1,21 @@
+div#hero{
+
+    height: 40vh;
+    min-height: 300px;
+    
+}
+
+    div.hero-content{
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        div.hero-content-flex{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }

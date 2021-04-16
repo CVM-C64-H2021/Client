@@ -1,0 +1,46 @@
+
+.wrapper{
+    min-width: 950px;
+    max-width: 95vw;
+    margin: auto;
+}
+
+body{
+    background: url(https://picsum.photos/id/705/1800/900/) top/100% no-repeat;
+}
+
+/* STYLE POUR HEADER */
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul{
+
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+    header nav ul li{
+
+        font-family: 'Barlow', sans-serif;
+        text-transform: uppercase;
+
+    }
+
+/* === STYLE POUR LE FOOOTER */
+footer{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+
+}
