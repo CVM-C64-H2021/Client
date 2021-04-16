@@ -1,9 +1,36 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">
+      <h1 class="font-titre">
         Alerts
       </h1>
+
+      
+
+      <hr>
+
+            <h5>Alertes en vigueur</h5>
+
+            <table>
+
+                <tr>
+                    <th>Sensor id</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Valeur</th>
+                    <th>Message</th>
+                </tr>
+                <tr v-for="alert in alerts" :key="alert.id">
+                    <td>{{ alert.id }}</td>
+                    <td>{{ alert.date }}</td>
+                    <td>{{ alert.type }}</td>
+                    <td>{{ alert.valeur }}</td>
+                    <td>{{ alert.messageAlerte }}</td>
+                </tr>
+
+            </table>
+
+            <hr>
 
     </div>
   </div>
@@ -13,13 +40,69 @@
 
 let patate = 3
 
-export default { 
+export default {
     data() {
       return {
-        patate: patate
+        alerts: []
       }
+    },    
+    async fetch() {
+      const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify( [
+   {
+      id:"1",
+      date:"2020-04-09",
+      type:"type",
+      valeur:"valeur",
+      messageAlerte:"Allô"
+   },
+   {
+      id:"32",
+      date:"2020-04-09",
+      type:"type",
+      valeur:"Valeur louche",
+      messageAlerte:"Ça va pô ben"
+   }
+] )
+  };
+    fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+    .then(response => response.json())
+    .then(data => (this.alerts = data));
     },
- }
+    methods: {
+      say: function (message) {
+        alert(message)
+    },
+    async fetch2() {
+      this.mountains = await fetch(
+        'https://api.nuxtjs.dev/mountains'
+      ).then(res => res.json())
+    }
+    }
+  }
+
+let repAPI = [
+   {
+      id:"id",
+      date:"2020-04-09",
+      type:"type",
+      valeur:"valeur",
+      messageAlerte:"msg ici"
+   },
+   {
+      id:"id",
+      date:"2020-04-09",
+      type:"type",
+      valeur:"valeur",
+      messageAlerte:"msg ici"
+   }
+]
+
+
+
+
 
 
 

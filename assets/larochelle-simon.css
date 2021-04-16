@@ -5,6 +5,10 @@
     /* CHANGER LES COULEURS D'ACCENTS ICI */
     --accent-colour: rgb(230, 132, 76);
     --background-colour: rgba(255, 220, 122, 1);
+
+    /* Original colors
+     --accent-colour: rgb(230, 132, 76);
+    --background-colour: rgba(255, 220, 122, 1);*/
 }
 
 *{
@@ -158,6 +162,10 @@ section{
     box-shadow: rgba(0, 0, 0, 0.25) 0 0 20px;
     background: white;
 
+}
+
+body{
+    background-color: var(--background-colour);
 }
 
 

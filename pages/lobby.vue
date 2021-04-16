@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">
+      <h1 class="font-titre">
         Lobby
       </h1>
         <nuxt-link :to="{name: 'sensors'}" class="button--grey">
