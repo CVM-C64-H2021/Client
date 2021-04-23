@@ -62,11 +62,12 @@ export default {
 
         return false;
     },    
-    signinDUMMY: function () {
+    async signinDUMMY () {
         
         localStorage.setItem('username', this.username)
         console.log(this.username);
-        fetch("https://jsonplaceholder.typicode.com/users", {
+        try {
+          const response = await fetch("https://www.antoinechagnonmichaud.com/api/authenticate", {
             method: "POST",
             credentials: 'include',
             body: JSON.stringify({
@@ -76,16 +77,20 @@ export default {
             headers: {
                 'Content-Type': 'application/json'
             }
+            
         })
-            .then(response => response.json())
-            .then(data => {
-                if (1 == 1) {            
-                    this.$router.push('mountains');
-                }
-                else {
-                    console.log("pas connecté");
-                }
-            });
+        const data = response.json()
+        if (1 == 1) {            
+              this.$router.push('lobby');
+          }  
+       
+        } catch (error) {
+          console.log(error);
+          console.log("pas connecté");
+        }
+        
+       
+            
 
         return false;
     }   

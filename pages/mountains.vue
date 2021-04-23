@@ -29,7 +29,7 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: "Vue POST Request Example" })
   };
-    await fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+    await fetch("http://dummy.restapiexample.com/api/v1/create", requestOptions)
     .then(response => response.json())
     .then(data => (this.mountains[0] = data));
     },
