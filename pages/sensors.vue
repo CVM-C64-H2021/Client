@@ -8,6 +8,9 @@
       </div>
     </div>
 
+    <div>
+    </div>
+
     <div class="container">
       <table id="laTable">
         <thead>
@@ -17,9 +20,8 @@
             <th>data</th>
           </tr>
         </thead>
-          
         <tbody>
-          <tr v-for="sensor in sensors" :key="sensor._id">
+          <tr v-for="sensor in sensors" :key="sensor._id" @click="logIt(sensor.msg)">
             <td>{{sensor._id}}</td>
             <td>{{sensor.name}}</td>
             <td>{{sensor.msg}}</td>
@@ -50,6 +52,11 @@
           {_id: "0002", name: "patate2", msg: "deux Patates"},
           {_id: "0003", name: "patate3", msg: "trois Patates"} 
         ]
+      }
+    },
+    methods:{
+      logIt: function(name){
+        console.log(name);
       }
     }
   }
