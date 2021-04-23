@@ -8,7 +8,10 @@
       </div>
     </div>
 
-    <div>
+    <div class="container">
+      <form id="search">
+        filtre: <input name="filter" v-model="searchQuery">
+      </form>
     </div>
 
     <div class="container">
@@ -47,6 +50,7 @@
   export default {
     data () {
       return {
+        searchQuery : "",
         sensors :[
           {_id: "0001", name: "patate1", msg: "une Patate"},
           {_id: "0002", name: "patate2", msg: "deux Patates"},
