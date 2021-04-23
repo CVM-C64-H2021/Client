@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <h1 class="font-titre">
-        Lobby
+        Lobby, Bonjour {{username}}
       </h1>
         <nuxt-link :to="{name: 'sensors'}" class="button--grey">
         Sensors
@@ -15,7 +15,16 @@
 </template>
 
 <script>
-export default {}
+export default { 
+  data() {
+      return {     
+        username: ""
+      }
+    },
+    mounted() {
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"
+}
+      }
 
 
 

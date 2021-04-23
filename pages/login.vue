@@ -2,11 +2,11 @@
   <div class="container">
 
    <form v-on:submit.prevent action="">
-        <label for="username">Courriel</label>
-        <input name="username" type="text" v-model="username" placeholder="votre courriel ici">
+        <label for="username">Username</label>
+        <input name="username" type="text" v-model="username" placeholder="votre nom d'utilisateur ici">
         <label for="password">Password</label>
         <input name="password" type="password" v-model="password" placeholder="votre password ici">
-        <button v-on:click="signinDUMMY()"  type="submit">Submit</button>
+        <button v-on:click="signin()"  type="submit">Submit</button>
 
     </form>
   </div>
@@ -29,17 +29,17 @@ export default {
   
     data() {
       return {
-        msg: "Pataaaaate",
-        username: "",
-        password: ""        
+        msg: "Pataaaaate",   
+        password: "",
+        username: ""
       }
     },
     methods: {
       signin: function () {
         
-        localStorage["username"] = this.username
+        localStorage.setItem("username", JSON.stringify(this.username)) 
         console.log(this.username);
-        fetch("https://jsonplaceholder.typicode.com/users", {
+        fetch("", {
             method: "POST",
             credentials: 'include',
             body: JSON.stringify({
@@ -61,13 +61,13 @@ export default {
             });
 
         return false;
-    },    
+    },
     async signinDUMMY () {
         
         localStorage.setItem('username', this.username)
         console.log(this.username);
         try {
-          const response = await fetch("https://www.antoinechagnonmichaud.com/api/authenticate", {
+          let resquestoptions = {
             method: "POST",
             credentials: 'include',
             body: JSON.stringify({
@@ -76,9 +76,10 @@ export default {
             }),
             headers: {
                 'Content-Type': 'application/json'
-            }
-            
-        })
+            }           
+          }
+
+        const response = await fetch("https://www.antoinechagnonmichaud.com/api/authenticate", resquestoptions)
         const data = response.json()
         if (1 == 1) {            
               this.$router.push('lobby');
@@ -88,6 +89,21 @@ export default {
           console.log(error);
           console.log("pas connecté");
         }
+        
+       
+            
+
+        return false;
+    },
+    async signin () {
+        
+        localStorage.setItem('username', this.username)
+        console.log(this.username);
+        
+        if (1 == 1) {            
+              this.$router.push('lobby');
+          }  
+       
         
        
             
