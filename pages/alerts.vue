@@ -72,6 +72,9 @@ export default {
       alert(item);
     },
   },
+  beforeMount(){
+      this.token = localStorage.getItem("token") || this.$router.push('login');       
+    },
 };
 </script>
 

@@ -18,12 +18,16 @@
 export default { 
   data() {
       return {     
-        username: ""
+        username: "",
+        isLoggedIn: true
       }
     },
+    beforeMount(){
+      this.token = localStorage.getItem("token") || this.$router.push('login');       
+    },
     mounted() {
-      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"
-      this.token = localStorage.getItem("token") || this.$router.push('login');   
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"       
+      this.isLoggedIn = true;
 }
       }
 
