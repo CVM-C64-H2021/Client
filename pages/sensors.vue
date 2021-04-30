@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="sensor in sensors" :key="sensor.idApp" @click="logIt(sensor.messageAlerte + sensor.idApp)">
+          <tr v-for="sensor in filteredData" :key="sensor.idApp" @click="logIt(sensor.messageAlerte + sensor.idApp)">
             <td>{{sensor.idApp}}</td>
             <td>{{sensor.date}}</td>
             <td>{{sensor.type}}</td>
@@ -87,7 +87,22 @@
       logIt: function(name){
         console.log(name);
       }
+    },
+    computed: {
+    filteredData: function () {
+      // Valeur des caractères recherchés
+      const filterKey = this.filterKey && this.filterKey.toLowerCase()
+      let data = this.data
+      if (filterKey) {
+        data = data.filter(function (row) {
+          return Object.keys(row).some(function (key) {
+            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+          })
+        })
+      }
+      return data
     }
+  },
   }
 
   /*export default {
