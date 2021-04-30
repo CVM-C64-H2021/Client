@@ -2,8 +2,9 @@
   <nav class="nav">
     <div class="#logo">
       <nuxt-link :to="{name: 'index'}" class="logo couleur accent bold">
-       C-64 "Nom intéressant à venir"
+       C-64 "Client"
       </nuxt-link>
+      <h1 v-if="token">Test</h1>
 
       <span class="subheader">Un projet de la cohorte au DEC intensif en informatique</span>
     </div>
