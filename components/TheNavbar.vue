@@ -20,20 +20,29 @@
         isLoggedIn: false
       }
     },
-    mounted() {
-      this.isLoggedIn = localStorage.getItem("token") ? true : false;
+
+watch: {
+  $route(){
+    this.loggedIn()
+  }
 },
-  watch() {
-    localStorage
-  },
+mounted(){
+  this.loggedIn()
+},
+
   methods: {   
     logout(){
       localStorage.removeItem("username");
       localStorage.removeItem("token");
       this.$router.push('login');
+      this.isLoggedIn = false;
+    },
+    loggedIn(){
+      this.isLoggedIn =!! localStorage.getItem("token");
+      }
 
-    }
   }
+
   }
 </script>
 
