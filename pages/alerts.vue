@@ -9,41 +9,45 @@
 
       <hr>
 
-            <h5>Alertes en vigueur</h5>
-
-            <table>
-
-                <tr>
-                    <th>Sensor id</th>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Valeur</th>
-                    <th>Message</th>
-                </tr>
-                <tr v-for="alert in alerts" :key="alert.id">
-                    <td>{{ alert.id }}</td>
-                    <td>{{ alert.date }}</td>
-                    <td>{{ alert.type }}</td>
-                    <td>{{ alert.valeur }}</td>
-                    <td>{{ alert.messageAlerte }}</td>
-                </tr>
-
-            </table>
-
-            <hr>
+        <h5>Alertes en vigueur</h5>
+          <DataTable>
+            v-for="item in items"
+            v-bind:key="item._id"
+            v-bind:item="item"
+          </DataTable>
+        <hr>
 
     </div>
   </div>
 </template>
 
 <script>
+  import DataTable from '@/components/DataTable'
 
 let patate = 3
 
 export default {
+  components: {
+      DataTable
+    },
     data() {
       return {
-        alerts: []
+        items: [{
+      id:"1",
+      date:"2020-04-09",
+      type:"type",
+      valeur:"valeur",
+      alerte: "1",
+      messageAlerte:"Allô"
+   },
+   {
+      id:"32",
+      date:"2020-04-09",
+      type:"type",
+      valeur:"Valeur louche",
+      alerte: "1",
+      messageAlerte:"Ça va pô ben"
+   }]
       }
     },    
     async fetch() {
@@ -56,20 +60,22 @@ export default {
       date:"2020-04-09",
       type:"type",
       valeur:"valeur",
+      alerte: "1",
       messageAlerte:"Allô"
    },
    {
       id:"32",
       date:"2020-04-09",
-      type:"type",
+      type:"type2",
       valeur:"Valeur louche",
+      alerte: "1",
       messageAlerte:"Ça va pô ben"
    }
 ] )
   };
     fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
     .then(response => response.json())
-    .then(data => (this.alerts = data));
+    //.then(data => (this.items = data));
     },
     methods: {
       say: function (message) {
@@ -80,7 +86,7 @@ export default {
         'https://api.nuxtjs.dev/mountains'
       ).then(res => res.json())
     }
-    }
+    },
   }
 
 let repAPI = [
