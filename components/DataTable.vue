@@ -9,7 +9,7 @@
             <th>Alerte</th>
             <th>Message</th>
         </tr>
-        <tr v-for="(item,i) in items" :key="i" @click="onItemSelected(item)">{{item}}>          <!-- Click sur sensor-->
+        <tr v-for="(item,i) in items" :key="i" @click="onItemSelected(item)">         <!-- Click sur sensor-->
             <td>{{ item.id }}</td>
             <td>{{ item.date }}</td>
             <td>{{ item.type }}</td>
@@ -29,11 +29,6 @@
             onItemSelected(item) {
                 this.$emit('onItemSelected', item)
             },
-            mounted() {
-            this.axios.get('http://localhost:3000/alerts').then(res => {
-            this.items = res.data
-        })
-    }
         }
     }
 </script>
