@@ -2,11 +2,10 @@
   <p v-if="$fetchState.pending">Fetching mountains...</p>
   <p v-else-if="$fetchState.error">An error occurred :(</p>
   <div v-else>
-    <h1>Nuxt Mountains</h1>
+    <h1>Nuxt test</h1>
     <ul>
-      <li v-for="mountain of mountains">{{ mountain.title }}</li>
+      <li v-for="mountain of mountains">{{ mountain.status }}</li>
     </ul>
-    <button @click="$fetch">Refresh</button>  
     <button v-on:click="say('what')">Say what</button>  
     <button v-on:click="fetch2()">{{username}}</button>  
     
@@ -17,21 +16,20 @@
   export default {
     data: function() {
   	return {
-    	mountains: [],
+    	mountains: [{
+        status : "Ceci n'est pas un test"
+      }],
       username: "Henri"
       }
     
   },
-  
-    async fetch() {
-      const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "Vue POST Request Example" })
-  };
-    await fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
-    .then(response => response.json())
-    .then(data => (this.mountains[0] = data));
+  mounted() {
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"
+},
+  async fetch() {
+      this.mountains = await fetch(
+        'https://postman-echo.com/get?test=123'
+      ).then(res => res.json())
     },
     methods: {
       say: function (message) {
@@ -39,7 +37,7 @@
     },
     async fetch2() {
       this.mountains = [{
-        title : "Ceci est un test"
+        status : "Ceci est un test"
       }]
     }
     }
