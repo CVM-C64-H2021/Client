@@ -19,15 +19,19 @@
         <thead>
           <tr>
             <th>Sensor</th>
-            <th>name</th>
-            <th>data</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Valeur</th>
+            <th>Message</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="sensor in sensors" :key="sensor._id" @click="logIt(sensor.msg)">
-            <td>{{sensor._id}}</td>
-            <td>{{sensor.name}}</td>
-            <td>{{sensor.msg}}</td>
+          <tr v-for="sensor in sensors" :key="sensor.idApp" @click="logIt(sensor.messageAlerte + sensor.idApp)">
+            <td>{{sensor.idApp}}</td>
+            <td>{{sensor.date}}</td>
+            <td>{{sensor.type}}</td>
+            <td>{{sensor.valeur}}</td>
+            <td>{{sensor.messageAlerte}}</td>
           </tr>
         </tbody>
       </table>
@@ -52,10 +56,31 @@
       return {
         searchQuery : "",
         sensors :[
-          {_id: "0001", name: "patate1", msg: "une Patate"},
-          {_id: "0002", name: "patate2", msg: "deux Patates"},
-          {_id: "0003", name: "patate3", msg: "trois Patates"} 
-        ]
+    {
+        "idApp": 45454,
+        "date": "2020-01-01",
+        "type": "typetest",
+        "valeur": "valeurtest",
+        "alerte": false,
+        "messageAlerte": "message test"
+    },
+    {
+        "idApp": 66666,
+        "date": "2020-01-01",
+        "type": "Ceci est un type",
+        "valeur": "Ceci est une valeur",
+        "alerte": false,
+        "messageAlerte": "Alerte de message"
+    },
+    {
+        "idApp": 127891,
+        "date": "2020-01-06",
+        "type": "le type",
+        "valeur": "la valeur du senseur",
+        "alerte": false,
+        "messageAlerte": "ALARME"
+    }
+]
       }
     },
     methods:{
