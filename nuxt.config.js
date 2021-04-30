@@ -17,8 +17,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/style.css',
-    '~/LIBCSS/styles/larochelle-simon.css'
+    '~/assets/larochelle-simon.css',
+    '~/assets/style.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

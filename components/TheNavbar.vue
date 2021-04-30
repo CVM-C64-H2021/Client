@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
-    <div class="logo">
-      <nuxt-link :to="{name: 'index'}" class="logo text-lg">
+    <div class="#logo">
+      <nuxt-link :to="{name: 'index'}" class="logo couleur accent bold">
        C-64 "Nom intéressant à venir"
       </nuxt-link>
 

@@ -1,13 +1,16 @@
 <template>
   <div class="container">
-   <form action="">
-        <label for="courriel">Courriel</label>
-        <input name="courriel" type="text" placeholder="votre courriel ici">
+
+   <form v-on:submit.prevent action="">
+        <label for="username">Username</label>
+        <input name="username" type="text" v-model="username" placeholder="votre nom d'utilisateur ici">
         <label for="password">Password</label>
-        <input name="password" type="password" placeholder="votre password ici">
-        <button type="submit">Submit</button>
+        <input name="password" type="password" v-model="password" placeholder="votre password ici">
+        <button v-on:click="signin()"  type="submit">Submit</button>
+
     </form>
   </div>
+  
 </template>
 
 <style scoped>
@@ -20,15 +23,126 @@
 
 </style>
 
-<script>
-    console.log("patate");
+<script> 
         
-export default {
-    
-}
+export default {  
+  
+    data() {
+      return {
+        msg: "Pataaaaate",   
+        password: "",
+        username: ""
+      }
+    },
+    methods: {
+      signin: function () {
+        
+        localStorage.setItem("username", JSON.stringify(this.username)) 
+        console.log(this.username);
+        fetch("", {
+            method: "POST",
+            credentials: 'include',
+            body: JSON.stringify({
+                "username": this.username,
+                "password": this.password,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data == "SIGNED_IN") {
+                    this.$router.push('mountains');
+                }
+                else {
+                    console.log("pas connecté");
+                }
+            });
 
-let repAPI = 
-{
+        return false;
+    },
+    async signinDUMMY () {
+        
+        localStorage.setItem('username', this.username)
+        console.log(this.username);
+        try {
+          let resquestoptions = {
+            method: "POST",
+            credentials: 'include',
+            body: JSON.stringify({
+                "username": this.username,
+                "password": this.password,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }           
+          }
+
+        const response = await fetch("https://www.antoinechagnonmichaud.com/api/authenticate", resquestoptions)
+        const data = response.json()
+        if (1 == 1) {            
+              this.$router.push('lobby');
+          }  
+       
+        } catch (error) {
+          console.log(error);
+          console.log("pas connecté");
+        }
+        
+       
+            
+
+        return false;
+    },
+    async signin () {
+        
+        localStorage.setItem('username', this.username)
+        console.log(this.username);
+        
+        if (1 == 1) {            
+              this.$router.push('lobby');
+          }  
+       
+        
+       
+            
+
+        return false;
+    }   
+    }
+  }
+
+    
+    
+
+
+let repAPI = [
+  {
+  id: "id",
+  date: "2020-04-09",
+  type: "type",
+  valeur: "valeur",
+  alerte: "0 ou 1",
+  messageAlerte: "msg ici"
+},
+  {
+  id: "id",
+  date: "2020-04-09",
+  type: "type",
+  valeur: "valeur",
+  alerte: "0 ou 1",
+  messageAlerte: "msg ici"
+},
+  {
+  id: "id",
+  date: "2020-04-09",
+  type: "type",
+  valeur: "valeur",
+  alerte: "0 ou 1",
+  messageAlerte: "msg ici"
+},
+  {
   id: "id",
   date: "2020-04-09",
   type: "type",
@@ -36,6 +150,9 @@ let repAPI =
   alerte: "0 ou 1",
   messageAlerte: "msg ici"
 }
+
+]
+
 </script>
 
 formdata = 
