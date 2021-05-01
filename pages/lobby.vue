@@ -21,8 +21,12 @@ export default {
         username: ""
       }
     },
+    beforeMount(){
+      this.token = localStorage.getItem("token") || this.$router.push('login');       
+    },
     mounted() {
-      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"     
+      
 }
       }
 

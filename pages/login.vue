@@ -30,79 +30,47 @@ export default {
     data() {
       return {
         msg: "Pataaaaate",   
-        password: "",
-        username: ""
+        password: "AAAaaa111",
+        username: "test1234"
       }
     },
-    methods: {
-      signin: function () {
-        
-        localStorage.setItem("username", JSON.stringify(this.username)) 
-        console.log(this.username);
-        fetch("", {
-            method: "POST",
-            credentials: 'include',
-            body: JSON.stringify({
-                "username": this.username,
-                "password": this.password,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data == "SIGNED_IN") {
-                    this.$router.push('mountains');
-                }
-                else {
-                    console.log("pas connecté");
-                }
-            });
-
-        return false;
-    },
-    async signinDUMMY () {
-        
-        localStorage.setItem('username', this.username)
-        console.log(this.username);
-        try {
-          let resquestoptions = {
-            method: "POST",
-            credentials: 'include',
-            body: JSON.stringify({
-                "username": this.username,
-                "password": this.password,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }           
-          }
-
-        const response = await fetch("https://www.antoinechagnonmichaud.com/api/authenticate", resquestoptions)
-        const data = response.json()
-        if (1 == 1) {            
-              this.$router.push('lobby');
-          }  
-       
-        } catch (error) {
-          console.log(error);
-          console.log("pas connecté");
-        }
-        
-       
-            
-
-        return false;
-    },
+    methods: {      
     async signin () {
         
         localStorage.setItem('username', this.username)
-        console.log(this.username);
-        
-        if (1 == 1) {            
-              this.$router.push('lobby');
-          }  
+        try {
+          let requestoptions = {
+              method: "POST",
+              body: JSON.stringify({
+                  "username": this.username,
+                  "password": this.password,
+              }),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          }       
+          
+          const response = await fetch("https://c64.herokuapp.com/api/login/", requestoptions);
+            const data = await response.json()
+          
+          if(response.status == 400){            
+            console.log(data.Error);
+          }
+          else if(response.status == 200){
+            console.log(data.token);
+            localStorage.setItem('token', data.token)
+            this.$router.push('lobby');        
+          }
+        } catch (error) {
+          if(response.status == 400){            
+            console.log("Erreur");
+          }
+          console.log("erreur dans le fetch");
+        }
+          
+   
+
+      
        
         
        

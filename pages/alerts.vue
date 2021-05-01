@@ -210,8 +210,11 @@ export default {
       }
 
       console.log("TOTAL PAGES" + this.totalPages);
-    }
-  }
+    },
+  },
+  beforeMount(){
+      this.token = localStorage.getItem("token") || this.$router.push('login');       
+    },
 };
 </script>
 
