@@ -1,25 +1,41 @@
 <template>
   <div class="container">
-    <div>
+    <div id="app">
       <h1 class="font-titre">Alerts</h1>
 
       <hr />
 
       <h5>Alertes en vigueur</h5>
+      <label class="select-box couleur-accent">Nombre de résultats par page: </label>
+      <select class="select-box" @change="setSelected($event)">
+        <option></option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
       <DataTable :items="items" @onItemSelected="onItemSelected" />
       <hr />
+      <Pagination
+        :totalPages="totalPages"
+        :totalItems="totalItems"
+        :itemsPerPage="itemsPerPage"
+        :currentPage="currentPage"
+        @onPageChanged="onPageChanged"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import DataTable from "@/components/DataTable";
+import Pagination from "@/components/Pagination";
 
 let patate = 3;
 
 export default {
   components: {
     DataTable,
+    Pagination,
   },
   data() {
     return {
@@ -40,7 +56,91 @@ export default {
           alerte: "1",
           messageAlerte: "Ça va pô ben",
         },
+        {
+          id: "1",
+          date: "2020-04-09",
+          type: "type",
+          valeur: "valeur",
+          alerte: "1",
+          messageAlerte: "Allô",
+        },
+        {
+          id: "32",
+          date: "2020-04-09",
+          type: "type2",
+          valeur: "Valeur louche",
+          alerte: "1",
+          messageAlerte: "Ça va pô ben",
+        },
+        {
+          id: "1",
+          date: "2020-04-09",
+          type: "type",
+          valeur: "valeur",
+          alerte: "1",
+          messageAlerte: "Allô",
+        },
+        {
+          id: "32",
+          date: "2020-04-09",
+          type: "type2",
+          valeur: "Valeur louche",
+          alerte: "1",
+          messageAlerte: "Ça va pô ben",
+        },
+        {
+          id: "1",
+          date: "2020-04-09",
+          type: "type",
+          valeur: "valeur",
+          alerte: "1",
+          messageAlerte: "Allô",
+        },
+        {
+          id: "32",
+          date: "2020-04-09",
+          type: "type2",
+          valeur: "Valeur louche",
+          alerte: "1",
+          messageAlerte: "Ça va pô ben",
+        },
+        {
+          id: "1",
+          date: "2020-04-09",
+          type: "type",
+          valeur: "valeur",
+          alerte: "1",
+          messageAlerte: "Allô",
+        },
+        {
+          id: "32",
+          date: "2020-04-09",
+          type: "type2",
+          valeur: "Valeur louche",
+          alerte: "1",
+          messageAlerte: "Ça va pô ben",
+        },
+        {
+          id: "1",
+          date: "2020-04-09",
+          type: "type",
+          valeur: "valeur",
+          alerte: "1",
+          messageAlerte: "Allô",
+        },
+        {
+          id: "32",
+          date: "2020-04-09",
+          type: "type2",
+          valeur: "Valeur louche",
+          alerte: "1",
+          messageAlerte: "Ça va pô ben",
+        },
       ],
+      currentPage: 0,
+      itemsPerPage: 0,
+      error: null
+
     };
   },
   async fetch() {
@@ -67,11 +167,51 @@ export default {
       ]),
     };
   },
-  methods: {
-    onItemSelected: function (item) {
-      alert(item);
+  computed: {
+    totalItems() {
+      console.log("THIS.ITEMS.LENGTH " + this.items.length);
+      if(this.items && this.items.length > 0) {
+        return this.items.length;
+      }
+    },
+    totalPages() {
+      if(this.items && this.items.length > 0) {
+        var limit = this.itemsPerPage > 0 ? this.itemsPerPage : 10;
+        return Math.ceil(this.items.length / limit);
+      }
+      else {
+        return 0;
+      }
     },
   },
+  methods: {
+    onItemSelected(item) {
+      alert(item);
+    },
+    mounted() {
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404";
+      this.token = localStorage.getItem("token") || this.$router.push("login");
+    },
+    onPageChanged(page) {
+        this.currentPage = page;
+    },
+    setSelected(event) {
+      var optionValue = event.target.value;
+      this.itemsPerPage = parseInt(optionValue);
+      console.log("ITEMS PER PAGE" + this.itemsPerPage);
+    },
+    totalPages() {
+      if(this.totalItems < this.itemsPerPage) {
+
+        this.totalPages = Math.Ceil(this.totalItems / this.itemsPerPage);
+      }
+      else {
+        this.totalPages = 1;
+      }
+
+      console.log("TOTAL PAGES" + this.totalPages);
+    }
+  }
 };
 </script>
 
