@@ -208,6 +208,7 @@ a{
     font-family: 'Barlow', sans-serif;
     color: var(--accent-colour);
     font-style: italic;
+    margin: 5px;
 }
 
     a.lien-icon::before{
