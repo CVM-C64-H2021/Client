@@ -14,7 +14,7 @@ export default {
     return {
       barChartData: {
         labels: [
-          date.now(),
+          "2019-06",
           "2019-07",
           "2019-08",
           "2019-09",
