@@ -4,15 +4,46 @@
       <nuxt-link :to="{name: 'index'}" class="logo couleur accent bold">
        C-64 "Client"
       </nuxt-link>
-      <h1 v-if="token">Test</h1>
-
       <span class="subheader">Un projet de la cohorte au DEC intensif en informatique</span>
+      <br>
+      <a v-if="isLoggedIn" class="btn btn-danger"
+      v-on:click="logout" >Se deconnecter</a>
     </div>
   </nav>
 </template>
 
 <script>
-  export default {}
+  export default {
+    data() {
+      return {     
+        username: "",
+        isLoggedIn: false
+      }
+    },
+
+watch: {
+  $route(){
+    this.loggedIn()
+  }
+},
+mounted(){
+  this.loggedIn()
+},
+
+  methods: {   
+    logout(){
+      localStorage.removeItem("username");
+      localStorage.removeItem("token");
+      this.$router.push('login');
+      this.isLoggedIn = false;
+    },
+    loggedIn(){
+      this.isLoggedIn =!! localStorage.getItem("token");
+      }
+
+  }
+
+  }
 </script>
 
 <style scoped>

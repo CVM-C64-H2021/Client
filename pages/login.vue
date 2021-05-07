@@ -59,7 +59,7 @@ export default {
           else if(response.status == 200){
             console.log(data.token);
             localStorage.setItem('token', data.token)
-            this.$router.push('lobby');
+            this.$router.push('lobby');        
           }
         } catch (error) {
           if(response.status == 400){            
