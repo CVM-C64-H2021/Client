@@ -7,7 +7,7 @@
       </h1>
        <nuxt-link :to="{name: 'login'}" class="button--grey">
         Login
-      </nuxt-link> 
+        </nuxt-link> 
         <a
           href="https://github.com/CVM-C64-H2021/Client"
           target="_blank"
@@ -16,7 +16,6 @@
         >
           GitHub
         </a>
-      </div>
     </div>
   </div>
 </template>
