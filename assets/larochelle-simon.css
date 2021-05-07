@@ -208,6 +208,7 @@ a{
     font-family: 'Barlow', sans-serif;
     color: var(--accent-colour);
     font-style: italic;
+    margin: 5px;
 }
 
     a.lien-icon::before{
@@ -254,7 +255,7 @@ button{
 
     display: block;
 
-    padding: 15px;
+    padding: 10px;
     margin: 15px;
 
     text-transform: uppercase;
@@ -270,7 +271,7 @@ button{
 
 }
 
-    button:hover{
+    button:hover {
         background: var(--accent-colour);
         box-shadow: var(--accent-colour) 0 0 20px;
     }
@@ -372,3 +373,35 @@ footer p{
 
 }
 
+.pagination {
+    list-style-type: none;
+}
+  
+.pagination-page {
+    display: inline-block;
+}
+  
+.active {
+    background-color: #4AAE9B;
+    color: #ffffff;
+}
+
+a.first::after {
+    content:'...';
+}
+
+a.last::before {
+    content:'...';
+}
+
+.select-box {
+
+    margin: 10px;
+    font-size: 16px;
+}
+
+select {
+
+    width: 50px;
+    height: 25px;
+}
