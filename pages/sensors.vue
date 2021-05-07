@@ -18,7 +18,6 @@
   </div>
 </template>
 
-    
 
 <style scoped>
 .container {
@@ -38,8 +37,10 @@ export default {
   },
   data () {
     return {
+      limit: 10,
+      offset : 0,
       sensors :[
-        {
+        /*{
           "idApp": 45454,
           "date": "2020-01-01",
           "type": "typetest",
@@ -62,89 +63,43 @@ export default {
           "valeur": "la valeur du senseur",
           "alerte": false,
           "messageAlerte": "ALARME"
-        }   
+        }*/   
       ] 
     }
   },
   methods:{
     logIt: function(name){
       console.log(name);
-    }
-  },
-  beforeMount() {
-      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404"
-      this.token = localStorage.getItem("token") || this.$router.push('login');   
-  }
-}
-
-  /*export default {
-    data() {
-      return {
-        sensors: [
-            {
-            _id:"1",
-            name: "patate1",
-            msg: "une patate"
-          },
-          {
-            _id:"32",
-            name: "patate2",
-            msg: "deux patates"
+    },
+    async getData (){
+      let formdata = {
+          method : "GET",
+          headers : {
+            'Content-Type' : 'application/json',
+            'authorization' : localStorage.getItem("token")
+            
           }
+        }
 
-        ]
+      try{
+        const response = await fetch("https://c64.herokuapp.com/api/sensors/", formdata);
+        const data = await response.json();
+        this.sensors = data;
       }
-    },    
-    async fetch() {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify( [
-          {
-            _id:"1",
-            name: "patate1",
-            message: "une patate"
-          },
-          {
-            _id:"32",
-            name: "patate2",
-            message: "deux patates"
-          }
-        ] )
-      };
-      fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
-      .await(response => response.json())
-      .then(data => (this.sensors = data));
-    },
-    methods: {
-      say: function (message) {
-        alert(message)
-    },
-    async fetch2() {
-      this.mountains = await fetch(
-        'https://api.nuxtjs.dev/mountains'
-      ).then(res => res.json())
+      catch(error){
+        console.log(error);
+      }
     }
-    }
-  }
 
-let repAPI = [
-   {
-      id:"id",
-      date:"2020-04-09",
-      type:"type",
-      valeur:"valeur",
-      messageAlerte:"msg ici"
-   },
-   {
-      id:"id",
-      date:"2020-04-09",
-      type:"type",
-      valeur:"valeur",
-      messageAlerte:"msg ici"
-   }
-]
-*/
+  },
+  beforeMount(){
+      this.token = localStorage.getItem("token") || this.$router.push('login');       
+    },
+    mounted() {
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404";
+      this.getData();
+    }  
+}
 </script>
 
 formdata = 
