@@ -20,7 +20,7 @@
           &laquo;
         </button>
       </li>
-      <li v-for="page in pages" :key="page.name" class="pagination-page">
+      <!-- <li v-for="page in pages" :key="page.name" class="pagination-page">
         <a
           href="#"
           @click="onPageClicked(page.name)"
@@ -29,7 +29,7 @@
         >
           {{ page.name }}
         </a>
-      </li>
+      </li> -->
       <li class="pagination-page">
         <button
           type="button"
@@ -77,7 +77,7 @@ export default {
        //return 0;
        
     },
-    endVisiblePage() {
+    /*endVisiblePage() {
       return Math.min(this.startVisiblePage, this.totalPages);
     },
     maxVisiblePages() {
@@ -102,7 +102,7 @@ export default {
       }
 
       return pageRange;
-    },
+    },*/
     isOnFirstPage() {
       return this.currentPage === 1 || this.totalPages === 1;
     },

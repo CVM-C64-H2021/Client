@@ -14,7 +14,7 @@
       <tbody>
         <tr v-for="(item, i) in items" :key="i" @click="onItemSelected(item)">
           <!-- Click sur sensor-->
-          <td>{{ item.id }}</td>
+          <td>{{ item.idApp }}</td>
           <td>{{ item.date }}</td>
           <td>{{ item.type }}</td>
           <td>{{ item.valeur }}</td>
