@@ -16,11 +16,12 @@
       <DataTable :items="items" @onItemSelected="onItemSelected" />
       <hr />
       <Pagination
-        :totalPages="totalPages"
-        :totalItems="totalItems"
-        :itemsPerPage="itemsPerPage"
+        :limit="limit"
+        :offset="offset" @updateOffset="updateOffset"
+        :itemCount="itemCount" @getItemCount="getItemCount"
         :currentPage="currentPage"
-        @onPageChanged="onPageChanged"
+        @onPreviousPageClicked="onPreviousPageClicked"
+        @onNextPageClicked="onNextPageClicked"
       />
     </div>
   </div>
@@ -137,15 +138,15 @@ export default {
           messageAlerte: "Ça va pô ben",
         },
       ],
-      currentPage: 1,
-      itemsPerPage: 0,
+      offset: 0,
+      limit: 10,
+      itemCount: 0,
       error: null
-
     };
   },
   async fetch() {
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify([
         {
@@ -168,7 +169,7 @@ export default {
     };
   },
   computed: {
-    totalItems() {
+    itemCount() {
       console.log("THIS.ITEMS.LENGTH " + this.items.length);
       if(this.items && this.items.length > 0) {
         return this.items.length;
@@ -176,41 +177,43 @@ export default {
     },
     totalPages() {
       if(this.items && this.items.length > 0) {
-        var limit = this.itemsPerPage > 0 ? this.itemsPerPage : 10;
-        return Math.ceil(this.items.length / limit);
+        var currentLimit = this.limit > 0 ? this.limit : 10;
+        return Math.ceil(this.items.length / currentLimit);
       }
       else {
         return 0;
       }
     },
   },
+  mounted() {
+      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404";
+      this.token = localStorage.getItem("token") || this.$router.push("login");
+    },
   methods: {
     onItemSelected(item) {
       alert(item);
     },
-    mounted() {
-      this.username = localStorage.getItem("username") || "USERNAMENOTFOUND404";
-      this.token = localStorage.getItem("token") || this.$router.push("login");
-    },
-    onPageChanged(page) {
-        this.currentPage = page;
+    updateOffset(newOffset) {
+
+      this.offset = newOffset;
+
     },
     setSelected(event) {
       var optionValue = event.target.value;
-      this.itemsPerPage = parseInt(optionValue);
-      console.log("ITEMS PER PAGE" + this.itemsPerPage);
+      this.limit = parseInt(optionValue);
+      console.log("ITEMS PER PAGE" + this.limit);
     },
-    totalPages() {
-      if(this.totalItems < this.itemsPerPage) {
+    /*totalPages() {
+      if(this.totalItems < this.limit) {
 
-        this.totalPages = Math.Ceil(this.totalItems / this.itemsPerPage);
+        this.totalPages = Math.Ceil(this.totalItems / this.limit);
       }
       else {
         this.totalPages = 1;
       }
 
       console.log("TOTAL PAGES" + this.totalPages);
-    },
+    },*/
   },
   beforeMount(){
       this.token = localStorage.getItem("token") || this.$router.push('login');       
