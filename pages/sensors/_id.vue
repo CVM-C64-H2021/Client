@@ -13,6 +13,12 @@
         :items="sensors" 
         @click="logIt(sensor.messageAlerte + sensor.id)" 
       />
+      <hr />
+      <Pagination
+        :limit="limit"
+        :offset="offset" @updateOffset="updateOffset"
+
+      />
     </div>
 
   </div>
@@ -30,46 +36,32 @@
 
 <script>
 import DataTable from "@/components/DataTable"; 
+import Pagination from "@/components/Pagination";
 
 export default {
   components: {
     DataTable,
+    Pagination,
   },
   data () {
     return {
       limit: 10,
       offset : 0,
       sensors :[
-        /*{
-          "idApp": 45454,
-          "date": "2020-01-01",
-          "type": "typetest",
-          "valeur": "valeurtest",
-          "alerte": false,
-          "messageAlerte": "message test"
-        },
-        {
-          "idApp": 66666,
-          "date": "2020-01-01",
-          "type": "Ceci est un type",
-          "valeur": "Ceci est une valeur",
-          "alerte": false,
-          "messageAlerte": "Alerte de message"
-        },
-        {
-          "idApp": 127891,
-          "date": "2020-01-06",
-          "type": "le type",
-          "valeur": "la valeur du senseur",
-          "alerte": false,
-          "messageAlerte": "ALARME"
-        }*/   
+    
       ] 
     }
   },
   methods:{
     logIt: function(name){
       console.log(name);
+    },
+    updateOffset(newOffset) {
+
+      this.offset = newOffset;
+      console.log(this.offset);
+      this.getData();
+
     },
     async getData (){
       let formdata = {
@@ -82,7 +74,9 @@ export default {
         }
 
       try{
-        const response = await fetch("https://c64.herokuapp.com/api/sensors/", formdata);
+        const id = this.$route.params.id;
+        console.log("ID"+ id);
+        const response = await fetch("https://c64.herokuapp.com/api/sensor/"+id+"?limit="+this.limit+"&offset="+this.offset, formdata);
         const data = await response.json();
         this.sensors = data;
       }
@@ -101,19 +95,4 @@ export default {
     }  
 }
 </script>
-
-formdata = 
-
-  {
-    request: "bla",
-    limit: "blabl;a"
-  }
-
-
-GET /sensors/ {limit, offset}
-
-GET /sensor/id {limit, offset}
-
-GET /alerts {limit, offset}
-
-GET /sensor/id/alerts {limit, offset}
+ 
