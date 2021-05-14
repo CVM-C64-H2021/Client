@@ -1,5 +1,5 @@
 <template>
-    <div class="DataTable">
+    <div class="DataTable overflow-auto">
 
         <div>
             filtre: <input v-model="searchQuery">
