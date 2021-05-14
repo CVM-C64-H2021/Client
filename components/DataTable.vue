@@ -19,7 +19,8 @@
                     <td>{{ item.idApp }}</td>
                     <td>{{ item.date }}</td>
                     <td>{{ item.type }}</td>
-                    <td>{{ item.valeur }}</td>
+                    <td v-if="item.type == 'image'"><img :src="`data:image/png;base64, ${image(item)}`"/></td>
+                    <td v-else>{{ item.valeur }}</td>
                     <td>{{ item.alerte }}</td>
                     <td>{{ item.messageAlerte }}</td>
                 </tr>
@@ -36,6 +37,9 @@
             onItemSelected(item) {
                 this.$emit('onItemSelected', item)
             },
+            image(item){
+                return item.valeur.slice(2, -1)
+            }
         },
         computed: {
             filteredData: function () {
