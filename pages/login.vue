@@ -7,6 +7,8 @@
         <label for="password">Password</label>
         <input name="password" type="password" v-model="password" placeholder="votre password ici">
         <button v-on:click="signin()"  type="submit">Submit</button>
+        <p>{{ msg }}</p>
+        <input v-model="msg">
 
     </form>
   </div>
@@ -28,8 +30,8 @@
 export default {  
   
     data() {
-      return {
-        msg: "Pataaaaate",   
+      return {        
+        msg: "Ceci est un texte pour la présentation uniquement",   
         password: "AAAaaa111",
         username: "test1234"
       }

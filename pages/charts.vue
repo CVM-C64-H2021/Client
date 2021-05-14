@@ -42,7 +42,7 @@ export default {
         },
         title: {
           display: true,
-          text: "Google analytics data",
+          text: "We want more charts!",
           fontSize: 24,
           fontColor: "#6b7280",
         },

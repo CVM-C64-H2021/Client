@@ -10,6 +10,9 @@
         <nuxt-link :to="{name: 'alerts'}" class="button--grey">
         Alerts
       </nuxt-link> 
+      <nuxt-link :to="{name: 'charts'}" class="button--grey">
+        Charts
+      </nuxt-link> 
     </div>
   </div>
 </template>
